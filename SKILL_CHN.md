@@ -1,7 +1,7 @@
 ---
 name: paper-reading-zh
 description: >
-  Use this skill when the user wants a Chinese-language deep reading of a research paper, preprint, or academic article. Trigger it when the user shares an arXiv link, PDF, OpenReview page, ACL Anthology link, paper title, abstract, or asks things like 帮我读这篇论文, 总结这篇论文, 分析这篇论文, 讲一下这篇文章, 帮我理解这篇 paper, or any request that asks for a paper to be explained, summarized, critiqued, challenged, or developed into follow-up research ideas in Chinese. This skill applies across technical and scientific domains, including machine learning, NLP, computer vision, systems, biology, physics, economics, and related areas. The goal is not to paraphrase the abstract. The goal is to reconstruct the authors' reasoning, explain the method clearly, evaluate the evidence, identify weak assumptions, and propose useful research directions in fluent, precise Chinese.
+  当用户希望用中文深度阅读、理解、总结、分析、批判或延展一篇研究论文、preprint或academic article时使用这个skill。触发场景包括：用户提供arXiv链接、PDF、OpenReview页面、ACLAnthology链接、PapersWithCode页面、论文标题、abstract，或提出类似帮我读这篇论文、总结这篇论文、分析这篇论文、讲一下这篇文章、帮我理解这篇paper、找这篇论文的问题、设计反例、提出follow-upidea等请求。适用于machine learning、NLP、computer vision、systems、biology、physics、economics等技术和科学领域。目标不是复述abstract，而是用流畅、准确的中文重建作者的思考路径，解释方法，评估证据，找出脆弱假设，并提出有研究价值的后续方向。
 
 ---
 
@@ -9,25 +9,36 @@ description: >
 
 ## 准备工作
 
-你需要联网搜索用户给你提供的论文全文，并搜索和总结对应论文。
+先获取用户提供的论文全文，再开始总结。
 
 用户可能提供：
 
-- URL（arXiv、ACL Anthology、OpenReview、PapersWithCode 等）
-- PDF 或文件附件
+- URL，如arXiv、ACLAnthology、OpenReview、PapersWithCode、出版社页面或实验室主页
+- PDF或文件附件
 - 论文标题
+- 论文标题加abstract
 
-如果提供了 URL，先 fetch 全文。如果只有标题，先 web search 找到论文，优先找 arXiv 版本，再 fetch 全文。不要只凭摘要作答——方法、实验细节和附录都是必要的。
+如果用户提供URL，先fetch全文。如果用户只提供标题，先web search找到论文的canonical版本，优先使用arXiv或官方会议版本。如果只能找到abstract，必须说明当前分析是临时的，并指出哪些部分无法验证。
 
-拿到全文后，先完整通读一遍（摘要、引言、相关工作、方法、实验、结论），识别核心技术 claim、关键实验、最重要的 baseline 对比，必要时搜索 2–3 篇紧密相关的先前工作。完成这步再开始写总结。
+不要只凭abstract作答。方法、实验细节、图表、limitations和appendix经常包含真正的贡献和真正的问题。
+
+拿到全文后，先完整读一遍abstract、introduction、related work、method、experiments、conclusion，必要时阅读appendix。开始写之前，先确定三件事：
+
+1. 论文的核心技术claim是什么。
+2. 支撑这个claim的关键实验或关键论证是什么。
+3. 最重要的baseline或prior work对比是什么。
+
+如果novelty不清楚，先搜索2到3篇紧密相关的论文，用来校准这篇论文真正新在哪里。不要凭感觉宣布它novel，也不要为了生成follow-upidea而编造相关工作。
 
 ---
 
 ## 输出结构
 
-你的任务是：清晰、易懂、深入、详细地总结这篇论文。
+你的任务是清晰、易懂、深入、详细地总结这篇论文。
 
-按顺序完整输出以下12个环节。
+按顺序完整输出以下12个环节。顺序有意义：先背景，再方法；先方法，再实验；先理解，再批评。除第6节外，不得跳过任何环节。
+
+输出以流畅段落为主。只有在结构确实有帮助时才使用bullet points，例如实验设计、pipeline步骤或最小复现实验。避免滥用破折号、引号、括号和低信息量转折。每句话都要有信息量。
 
 ---
 
@@ -42,16 +53,17 @@ description: >
 
 这个问题之前被解决了吗？之前的研究为什么存在不足？
 
-点名最相关、引用量最高的先前方法，说清楚它们能做什么。然后精确说明它们为什么不够。
+点名最相关的prior methods、systems、datasets或theoretical results，并简要说明它们已经能做到什么。然后精确解释它们为什么不够：是方法本身的限制、关键假设失效、工程成本太高、评测缺口，还是当时问题还没有被清楚定义？
 
-避免泛泛说"prior work 没有考虑 X"——要解释为什么没有考虑：是技术上做不到、被忽视了，还是当时这个问题根本没被认识到？
+避免泛泛说prior work没有考虑X。要解释为什么X没有被考虑：技术上做不到、成本太高、被忽视了，还是当时这个问题还没有出现。
 
 ---
 
 ### § 3 — 重建作者的思考路径
 
-在正式讲方法之前，先重建作者可能的思考路径。这个部分不要使用论文自己的贡献作为前提，只使用之前已有的背景、失败模式、经验观察和相关工作。
-思考和模拟作者本人的思路和受到的 inspiration 以及 intuition，引导读者理解为什么作者可以基于已有知识想到这篇论文的 idea。
+在正式讲方法之前，先逆向重建作者可能的思考路径。
+
+这个部分不要用论文自己的贡献作为前提。只能使用这篇论文之前已经存在的背景、失败模式、经验观察、理论线索和相关工作。目标是模拟一个认真研究这个问题的人，如何从已有知识走到这篇论文的idea。
 
 ---
 
@@ -140,16 +152,19 @@ description: >
 
 ## 风格
 
-风格参考 Andrej Karpathy 和 Kaiming He，要求有真人的语感。
+输出语言默认为中文。专业术语保留英文原词，例如attention、fine-tuning、ablation、retrieval、policy gradient、representation、benchmark，不要机械翻译。
 
-Andrej Karpathy 的写法：从一个具体的技术情境出发，直接点名问题，在给出解法之前先展示失败模式，用朴素的词汇、具体的名词、数字和动作，保留一些真实的人味（"我试了这个"、"这个很烦"、"感觉不对"），不要把文字打磨到失去质感。
-
-Kaiming He 的写法：从真实问题出发，干净地陈述方法或 claim，偏好结构而非装饰，只在有用的地方用证据，在追求文体之前保持技术写作的精确性。
+风格参考Andrej Karpathy和Kaiming He，但只学习可迁移的技术写作特征。
 
 具体要求：
 
-- 使用详细的、准确的 claim，每句话都要有信息量，避免大空话和泛泛而谈
-- 使用流畅的文本，避免滥用破折号、引号，保持输出内容清洁流畅，易读性高
-- 使用真人逻辑，避免使用"不是……而是……"这种低信息量结构
-- 输出语言默认为中文，专业术语保留英文原词（如 attention、fine-tuning、ablation 等），不要机械翻译
-
+- 从具体技术情境出发，不要悬空总结。
+- 直接点名问题，先展示失败模式，再解释方法。
+- 使用具体名词、动作和数字，少用抽象形容词。
+- 先写claim，再写evidence。
+- 保留不确定性，不要装作什么都确定。
+- 每句话都要有信息量，避免大空话和泛泛而谈。
+- 使用流畅段落，少用模板化bullet points。
+- 避免滥用破折号、引号、括号和分号。
+- 避免低信息量句式，例如不是A而是B，重要的是，值得注意的是，总而言之。
+- 不要使用groundbreakin
