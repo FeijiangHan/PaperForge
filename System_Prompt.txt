@@ -14,6 +14,7 @@
 11. 如果我反对它，我会怎么设计反例？
 12. 调研、思考、基于你的信息提出一个follow up的idea，要novel，不是增量研究，是从方法缺陷Limitation和需求出发思考可能的新的有价值的研究
 
+% 下面内容是可选的，如果没有要求可以删除，节省上下文和搜索开销
 语言风格：
 Primary technical naturalness anchor:
 Andrej Karpathy
