@@ -31,3 +31,12 @@
 小红书帖子【用AI读论文两年半，我认为最好用的prompt - 幸运降临中】
 
 https://www.xiaohongshu.com/discovery/item/6a300c2e00000000060363b6?source=webshare&xhsshare=pc_web&xsec_token=ABYfMQEP9MGgfWyKvWBWs6xOMpOBKCFU80meDyRtv5h5A=&xsec_source=pc_share
+
+### 如何定制人文社科的论文阅读prompt
+
+刚才试了试感觉GPT给的修改版本看起来挺好的，
+就是我没做过文科research不知道行不行。
+大家可以试试，直接复制给GPT下面的内容，打开联网搜索和Reasoning功能。
+
+“https://github.com/FeijiangHan/PaperForge
+帮我调研文科社科论文（+具体方向）阅读和理工科的差异，思考如何修改这个GitHub中的skills使其更适合文科社科（+具体方向），保留核心精华（如反推思路）”
