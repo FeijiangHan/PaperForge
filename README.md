@@ -8,34 +8,60 @@
 
 | File                                       | Description                                                  |
 | ------------------------------------------ | ------------------------------------------------------------ |
-| [`SKILL_CHN.md`](./SKILL_CHN.md)           | 中文版 Skill，适配 Claude Skill 系统，直接安装使用           |
+| [`SKILL_CHN.md`](./SKILL_CHN.md)           | 中文版 Skill，适配 Claude/Codex Skill 系统，直接安装使用           |
 | [`SKILL_EN.md`](./SKILL_EN.md)             | English Skill, formatted for the Claude Skill system         |
 | [`System_Prompt.txt`](./System_Prompt.txt) | System Prompt，可直接粘贴到 ChatGPT / Claude 的自定义指令中使用 |
 
 
 ## How to Use
 
-### Option A: Claude Skill（推荐）
+### Option A: Claude/Codex Skill
 
-将 [`SKILL_CHN.md`](./SKILL_CHN.md) 或 [`SKILL_EN.md`](./SKILL_EN.md) 安装为 Claude Skill。安装后，在对话中直接发送论文链接或标题，Claude 会自动触发完整的12节分析流程。
+将[`SKILL_CHN.md`](./SKILL_CHN.md) 或 [`SKILL_EN.md`](./SKILL_EN.md) 安装为Skill。安装后，在对话中直接发送论文链接或标题，Agent会自动触发完整的12节分析流程。
 
-### Option B: System Prompt（GPT / Claude 通用）
+### Option B: System Prompt (推荐)
 
 将 [`System_Prompt.txt`](./System_Prompt.txt) 的内容粘贴到：
 
-- **ChatGPT**：创建Project → Custom Instructions
+- **ChatGPT**：创建Project → Custom Instructions 
 - **Claude**：Project Instructions
 
 然后在对话中发送论文链接、标题或 PDF，即可获得完整分析。
 
-### Update：如何定制人文社科的论文阅读prompt
+### Option C: 自我进化
+
+如果你已经有自己的论文阅读prompt或skills，可以让Agent / LLM自动review这个repo，并结合你原来的版本取长补短。
+
+你可以让模型完成三件事：
+
+1. 比较你现有prompt和PaperForge的差异
+2. 保留你原来workflow中最适合自己的部分
+3. 合并出一版更贴合你研究方向和阅读习惯的论文阅读prompt
+
+PaperForge也可以作为你自己paper-reading workflow的起点。
+
+### Option D: 定制人文社科等其他方向的论文阅读prompt
 
 目前的版本主要侧重理工科等重实验和方法论的论文阅读。
-对于文科社科，
-大家可以试试直接复制给GPT下面的内容，打开联网搜索和Reasoning功能。
+如果你想改成适合文科社科的版本，可以试试直接复制给GPT下面的内容，打开联网搜索和Reasoning功能。
 
-“https://github.com/FeijiangHan/PaperForge
-帮我调研文科社科论文（+具体方向）阅读和理工科的差异，思考如何修改这个GitHub中的skills使其更适合文科社科（+具体方向），保留核心精华（如反推思路）”
+> https://github.com/FeijiangHan/PaperForge
+> 帮我调研文科社科论文（具体方向）阅读和理工科论文阅读的差异，并思考如何修改这个GitHub repo中的skills，使其更适合文科社科（具体方向）。请保留核心精华，例如反推作者思路、拆解论证结构、识别关键假设、寻找可延展的问题。
+
+
+你可以把其中的 具体方向 替换成：
+* history
+* sociology
+* political science
+* philosophy
+* anthropology
+* education
+* communication
+* economics
+* law
+* literary studies
+
+---
 
 ## Reference
 
