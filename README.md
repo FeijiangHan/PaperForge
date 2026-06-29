@@ -19,7 +19,7 @@
 
 将[`SKILL_CHN.md`](./SKILL_CHN.md) 或 [`SKILL_EN.md`](./SKILL_EN.md) 安装为Skill。安装后，在对话中直接发送论文链接或标题，Agent会自动触发完整的12节分析流程。
 
-### Option B: System Prompt (推荐)
+### Option B: System Prompt (个人推荐)
 
 将 [`System_Prompt.txt`](./System_Prompt.txt) 的内容粘贴到：
 
@@ -27,6 +27,7 @@
 - **Claude**：Project Instructions
 
 然后在对话中发送论文链接、标题或 PDF，即可获得完整分析。
+（也可以对任何LLMs直接在chat对话中粘贴这个prompt，然后上传pdf就行了）
 
 ### Option C: 自我进化
 
@@ -70,6 +71,8 @@ PaperForge也可以作为你自己paper-reading workflow的起点。
 AI时代，要用社区共识发现每个月最值得关注的论文，而不是只靠顶会的"免费苦力"审稿人来筛选论文。
 我爬了hugging face和alphaxiv榜单，用upvotes-likes-github stars作为筛选指标，过滤-聚合-排序每月互联网热度最大的AI papers，可以直接把这里最终merged的csv丢给你的claude/gpt来个性化分析每月趋势，并提取感兴趣的insights：
 https://github.com/FeijiangHan/AI-hot-paper-insights-summary
+
+亲测：这样做，效果比给gpt/claude提供链接再爬取html分析更全面准确
 
 ---
 
