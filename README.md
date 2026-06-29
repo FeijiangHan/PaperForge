@@ -23,11 +23,12 @@
 
 将 [`System_Prompt.txt`](./System_Prompt.txt) 的内容粘贴到：
 
-- **ChatGPT**：创建Project → Custom Instructions 
-- **Claude**：Project Instructions
+- 方法1：创建Project → Custom Instructions，然后在对话中发送论文链接、标题或 PDF，即可获得完整分析。优点是方便复用，不需要每次粘贴prompt。
+- 方法2：直接在chat对话中粘贴这个prompt，然后上传pdf/paper链接/标题就行了
 
-然后在对话中发送论文链接、标题或 PDF，即可获得完整分析。
-（也可以对任何LLMs直接在chat对话中粘贴这个prompt，然后上传pdf就行了）
+个人经验：我之前一直用方法1，感觉很方便。最近试了方法2，竟然发现总结的质量更高一些。不确定是不是system prompt和user prompt位置不同导致生成质量的不同。
+
+
 
 ### Option C: 自我进化
 
