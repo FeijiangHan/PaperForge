@@ -68,7 +68,7 @@ PaperForge也可以作为你自己paper-reading workflow的起点。
 ## 补充：读什么论文？（限AI方向）
 
 AI时代，要用社区共识发现每个月最值得关注的论文，而不是只靠顶会的"免费苦力"审稿人来筛选论文。
-我爬了hugging face和alphaxiv榜单并过滤聚合了每月AI paper，可以直接把这里的csv丢给你的claude/gpt分析每月趋势并提取感兴趣的insights：
+我爬了hugging face和alphaxiv榜单，用upvotes-likes-github stars作为筛选指标，过滤-聚合-排序每月互联网热度最大的AI papers，可以直接把这里最终merged的csv丢给你的claude/gpt来个性化分析每月趋势，并提取感兴趣的insights：
 https://github.com/FeijiangHan/AI-hot-paper-insights-summary
 
 ---
