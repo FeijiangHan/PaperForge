@@ -1,23 +1,30 @@
 # PaperForge
 
+[简体中文](./README.md) | [English](./README_EN.md)
+
 **An active paper-reading skill that reconstructs author reasoning, explains methods mechanistically, stress-tests assumptions, and generates follow-up research ideas.**
 
 ---
 
 ## Files
 
-| File                                       | Description                                                  |
-| ------------------------------------------ | ------------------------------------------------------------ |
-| [`SKILL_CHN.md`](./SKILL_CHN.md)           | 中文版 Skill，适配 Claude/Codex Skill 系统，直接安装使用           |
-| [`SKILL_EN.md`](./SKILL_EN.md)             | English Skill, formatted for the Claude Skill system         |
-| [`System_Prompt.txt`](./System_Prompt.txt) | System Prompt，可直接粘贴到 ChatGPT / Claude 的自定义指令中使用 |
-
+| File | Description |
+| --- | --- |
+| [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | 中文版，符合 Agent Skills 标准目录与 `SKILL.md` 格式 |
+| [English Skill](./.agents/skills/paper-reading/SKILL.md) | English version, following the Agent Skills standard |
+| [`SKILL_CHN.md`](./SKILL_CHN.md) | 中文版兼容入口，保留旧链接 |
+| [`SKILL_EN.md`](./SKILL_EN.md) | English compatibility entry, preserving existing links |
+| [`System_Prompt.txt`](./System_Prompt.txt) | 可直接粘贴到 ChatGPT / Claude 自定义指令中的 Prompt |
 
 ## How to Use
 
 ### Option A: Claude/Codex Skill
 
-将[`SKILL_CHN.md`](./SKILL_CHN.md) 或 [`SKILL_EN.md`](./SKILL_EN.md) 安装为Skill。安装后，在对话中直接发送论文链接或标题，Agent会自动触发完整的12节分析流程。
+安装 [.agents/skills/paper-reading-zh/SKILL.md](./.agents/skills/paper-reading-zh/SKILL.md)（中文）或 [.agents/skills/paper-reading/SKILL.md](./.agents/skills/paper-reading/SKILL.md)（English），并放在对应的 Skill 目录中。两者都使用 Agent Skills 的标准 `SKILL.md` 文件名和 YAML frontmatter。
+
+默认 **Core Reading（第 1–8 节）**，用于理解论文的问题、prior work、思路、intuition、pipeline、数学、实验和 takeaways。想复现、找漏洞、调研后续研究或挖掘新 idea 时，启用 **Research Deep Dive（第 9–13 节）**。若只问某个具体问题，则直接回答，不必执行完整流程。
+
+旧版保存在 [backup/pre-skills-v2-2026-10-29](./tree/backup/pre-skills-v2-2026-10-29)，可随时回顾或恢复。
 
 注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话）
 

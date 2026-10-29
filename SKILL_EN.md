@@ -1,177 +1,153 @@
 ---
 name: paper-reading
-description: >
-  Use this skill when the user wants to deeply read, understand, summarize, analyze, critique, or extend a research paper, preprint, or academic article in English. Trigger it when the user provides an arXiv link, PDF, OpenReview page, ACL Anthology link, PapersWithCode page, paper title, abstract, or asks things like help me read this paper, summarize this paper, analyze this paper, explain this paper, help me understand this paper, find weaknesses in this paper, design counterexamples, or propose follow-up ideas. This skill applies across technical and scientific domains, including machine learning, NLP, computer vision, systems, biology, physics, economics, and related areas. The goal is not to restate the abstract, but to reconstruct the authors' reasoning, explain the method, evaluate the evidence, identify vulnerable assumptions, and propose research directions with clear, accurate English.
-  
+description: >-
+  Read and explain research papers in clear English. Use when a user provides a PDF, arXiv or OpenReview link, venue page, paper title, or abstract and asks for a paper summary, method or math explanation, experiment analysis, limitations, counterexamples, replication plan, subsequent research, or follow-up idea. Default to an eight-part reading guide covering the problem, prior work, plausible research reasoning, intuition, pipeline, math, evidence, and takeaways. Add five research-deep-dive sections only when the user wants critical follow-up work.
+metadata:
+  author: PaperForge
+  version: "2.0.0"
 ---
 
-# Paper Reading Skill
+# PaperForge: Deep Paper Reading (English)
 
-## Preparation
+## Goal and invocation
 
-First obtain the full text of the paper before writing the analysis.
+Help the reader understand what problem the researchers faced, why earlier work was insufficient, how a plausible idea could emerge, what the method actually does, which evidence supports its claims, and where those claims stop.
 
-The user may provide:
+- **Core Reading (default):** Produce Sections 1–8 for paper summaries, walkthroughs, and requests to understand a paper.
+- **Research Deep Dive (on demand):** Add Sections 9–13 only when the user wants to pursue the work, examine weaknesses, reproduce results, develop a counterexample, or find a new research direction. For a focused question, answer only the relevant sections rather than repeating the entire report.
+- **Quick screening:** If the user only wants to decide whether a paper is worth reading, start with one or two substantive research questions and a short account of what the paper addresses. Let the user decide whether to go further. Screening is not a substitute for a full reading.
 
-- A URL, such as arXiv, ACL Anthology, OpenReview, PapersWithCode, a publisher page, or a lab page
-- A PDF or file attachment
-- A paper title
-- A title plus abstract
+Respect the user's language, length constraints, and specific research questions. If the user raises a concrete concern, make that concern central to the explanation.
 
-If the user provides a URL, fetch the full text first. If the user provides only a title, web search for the canonical version, preferably arXiv or the official venue version. If only the abstract is available, state that the analysis is provisional and explain which parts cannot be verified.
+## Workflow
 
-Do not answer from the abstract alone. The method, experimental details, figures, limitations, and appendix often contain the real contribution and the real problems.
+### 1. Identify the paper and acquire the evidence
 
-After obtaining the full text, read the abstract, introduction, related work, method, experiments, conclusion, and appendix when needed. Before writing, identify three things:
+1. Prioritize the file or version explicitly supplied by the user. Otherwise, use available search, browsing, or file tools to locate the full paper. Prefer an official published version or the author's complete manuscript. Record the venue, date, and arXiv revision when discoverable; never mix claims or results from different versions without saying so.
+2. Read beyond the abstract or a search snippet. Cover the introduction, related work, method, experiments, and conclusions. Inspect appendices, proofs, limitations, and released code documentation as needed to verify important details.
+3. **Inspect visual evidence.** Read the method overview, diagrams, tables, axes, legends, controls, and error bars. If tools can display PDF pages or figures, inspect them visually. Do not infer figure details from extracted text alone.
+4. Retrieve a small set of closely related earlier papers when context or a novelty comparison is necessary. Prefer original research articles, official versions, and project repositories. An unsuccessful search is not evidence that no related work exists.
+5. If the full text, essential figures, appendices, or external search are inaccessible, disclose the exact limitation and affected conclusions. A provisional analysis is acceptable; pretending to have verified unavailable material is not. Never claim to have searched the web unless a search actually occurred.
 
-1. The paper's central technical claim.
-2. The key experiment or argument supporting that claim.
-3. The most important baseline or prior work comparison.
+### 2. Build a claim–evidence outline before writing
 
-If the novelty is unclear, search for 2 to 3 closely related papers to calibrate what is actually new. Do not claim novelty based on intuition, and do not invent related work to generate a follow-up idea.
+Identify:
 
-------
+- The precise **research question** and the paper's central technical claim.
+- The closest prior approaches, what they already accomplish, and the concrete remaining gap.
+- The method's core mechanism, assumptions, and likely failure modes.
+- Which experiment, theorem, or analysis addresses each claim, including the essential baseline and metric.
+- Which conclusions are observed, which are the authors' interpretations, and which remain untested.
 
-## Output structure
+Match claims to evidence. Success on one benchmark does not establish a mechanism, and outperforming a particular baseline does not imply universal superiority.
 
-Your task is to produce a clear, readable, deep, and detailed paper analysis.
+### 3. Source discipline and epistemic status
 
-Output the following 12 sections in order. The order matters: background before method, method before experiments, understanding before critique. Do not skip any section except Section 6.
+Throughout the response, distinguish four kinds of statements. Use natural attributions rather than tagging every sentence:
 
-Write mostly in flowing paragraphs. Use bullet points only when they genuinely improve structure, such as for experimental design, pipeline steps, or a minimum reproducible experiment. Avoid overusing dashes, quotation marks, parentheses, and low-information transitions. Every sentence should carry information.
+1. **Paper states or demonstrates:** a definition, claim, measurement, or proof from the target paper. Cite the relevant section, figure, table, equation, or page when available.
+2. **Prior work establishes:** a documented result from another source. Provide a verifiable reference and do not misattribute it to the target paper.
+3. **Reasonable inference:** your interpretation supported by identified evidence, but not asserted or demonstrated explicitly in the paper.
+4. **Speculation:** an untested explanation, conjecture, or new idea, with uncertainty and a way to test it made explicit.
 
-------
+Separate what the authors **claim**, what the experiments **observe**, and what those observations **actually establish**. Report conflicting evidence and missing information. Never invent citations, numerical results, author motivations, code behavior, or experiments.
 
-### § 1 - Research problem and importance
+## Core Reading: Sections 1–8 by default
 
-What research problem does the paper propose and solve? Why is this problem important? What value would solving it bring?
+### 1. Research problem: What is broken, and why does it matter?
 
-If the importance is not obvious, do a small amount of background research to provide context.
+Start with a concrete technical situation in which an existing method or theory runs into trouble. State the research question in one precise sentence, then explain why the question matters and what solving it could make possible. Add verified context when needed. Avoid generic claims of importance.
 
-------
+### 2. Prior work: What was already solved, and what remained?
 
-### § 2 - Prior work and limitations
+Identify the two to four closest methods, systems, or theoretical results, adjusting the count to relevance. Explain fairly what each already achieves before naming the actual gap. Distinguish method limits, violated assumptions, cost, evaluation weaknesses, and different task settings. Do not take the paper's novelty narrative as independent proof of novelty.
 
-Had this problem been addressed before? Why were previous approaches insufficient?
+### 3. Reconstruct a **plausible** path to the idea
 
-Name the most relevant prior methods, systems, datasets, or theoretical results, and briefly explain what they can already do. Then explain precisely why they are not enough: is the limitation in the method itself, a failed assumption, high engineering cost, an evaluation gap, or a problem that had not yet been clearly defined?
+Before introducing the proposed method, reason from the knowledge available **before this paper**: existing results, observed failures, practical constraints, theoretical clues, and unanswered questions.
 
-Avoid the vague framing prior work did not consider X. Explain why X was not considered: was it technically infeasible, too expensive, overlooked, or not yet a visible problem?
+Use the progression **what was known → a concrete tension or failure → an available clue → a testable hypothesis → why the hypothesis was worth trying**.
 
-------
+This is a **retrospective research reconstruction**, not an account of the authors' actual private thinking. Unless the paper, an interview, or another source documents their thought process, do not invent an anecdote or claim that the authors experienced these steps. Never smuggle the paper's final discoveries into the premises or make the result sound inevitable.
 
-### § 3 - Reconstructing the authors' thought process
+### 4. Core intuition
 
-Before explaining the method, reverse-engineer the authors' possible path of thought.
+In two to four plain-language sentences, explain the property or mechanism the method exploits and why it could address the gap from Section 2. Leave out implementation details and unnecessary formulas. Name a consequential unverified assumption if the intuition depends on one.
 
-Do not use the paper's own contribution as the premise. Use only the background, failure modes, empirical observations, theoretical clues, and related work that existed before this paper. The goal is to simulate how a serious researcher could move from existing knowledge to this paper's idea.
+### 5. Method: The full input-to-output pipeline
 
-------
+Define the inputs and outputs, distinguish training from inference, and walk through the actual execution order: **input → key operation or state change → intermediate result → output**. Explain what is new and what comes from standard components. Prefer a real example from the paper; label any invented teaching example as illustrative, never as an experimental result. Include the design choices necessary to understand why the method works.
 
-### § 4 - Core intuition
+### 6. Math and theory: From foundations to the key equations (if applicable)
 
-Explain the method's core intuition in 2 to 4 sentences. Remove the formalism, ablations, and engineering details.
+Explain only the math necessary to understand the central method rather than reproducing every appendix derivation.
 
-What is the key idea that made prior methods fail and this method work? If this cannot be explained in plain language, the understanding is not finished.
+- Define the problem, variables, notation, and minimum prerequisites for a reader with limited mathematical background.
+- For each important equation, explain **what it means → why it is formulated that way → how the next step follows → what it implies for the method**.
+- Distinguish proven statements, assumptions, standard approximations, and intuition. Never manufacture a missing proof step.
+- Use valid Markdown math: inline `\(...\)` and display `\[...\]`. Check notation, LaTeX commands, delimiters, and escaping.
+- If the paper has no meaningful formal derivation, say so briefly and omit this section.
 
-------
+### 7. Experiments: Which claims were actually tested?
 
-### § 5 - Method and full pipeline
+Select the experiments that best address the paper's central claims. For each, use the sequence:
 
-What is the concrete method proposed by the paper? Explain it with a realistic example: input, processing, and output. Use clear structure when helpful.
+**question / hypothesis → setup (data, baseline, metrics, controlled variables) → observed result → warranted conclusion and limitations**.
 
-------
+Explain why a baseline is appropriate, what an ablation rules out, and what alternative explanations remain. Avoid dumping numerical tables; retain decisive numbers, negative findings, and surprising results. Do not let an experiment answer a question its design never tested.
 
-### § 6 - Core mathematical derivation
+### 8. Takeaways
 
-What is the paper's core mathematical derivation, if it has one? Explain it step by step from the theoretical side.
+Give three to five specific takeaways covering the research problem, mechanism, strongest evidence, and scope of the findings. End with **one sentence** stating what a reader should genuinely learn from this paper. Avoid simply repeating the abstract or presenting future applications as established results.
 
-If there is formal math, provide the necessary background for a reader with weaker math preparation. Explain the foundation of the theory and the intuition behind each formula. If there is no meaningful formal derivation, say so and skip this section.
+**Stop here by default.** Continue with Sections 9–13 only when the user requests research follow-up. A brief indication that deeper analysis is available is enough.
 
-------
+## Research Deep Dive: Sections 9–13 only when needed
 
-### § 7 - Experimental design and conclusions
+### 9. Most vulnerable assumption
 
-How does the paper design experiments to verify its method and claims?
+Choose the one assumption whose failure would most threaten the central claim. Explain what it is, when it might fail, what evidence supports it, and what is still missing. Prefer a **high-impact, insufficiently tested assumption** over a generic list of limitations.
 
-Use this format: what question is being asked -> what experiment is designed to answer it -> what answer does the experiment give.
+### 10. A one-week minimum replication
 
-Do not include too many numerical details. Focus on the core experimental logic.
+Design the smallest experiment that could meaningfully test a central, falsifiable claim in roughly one week. Specify:
 
-------
+- **Target:** The exact claim being tested.
+- **Materials and implementation:** Available data, model, code, or theoretical setup and the minimum necessary procedure.
+- **Control and metric:** What to compare, what to measure, and which confounders to control.
+- **Decision rule:** Results that would support, weaken, or contradict the claim.
+- **Feasibility:** Expected compute, time, cost, data access, and major risks. If one week is unrealistic, say so and propose a smaller proxy test.
 
-### § 8 - Takeaways
+Distinguish a proposed replication from a completed experiment. Never report results from an experiment that was not run.
 
-Summarize the paper's takeaways.
+### 11. Strongest counterexample
 
-------
+From the perspective of a serious critic, propose a counterexample, alternative explanation, or predictable failure case that could genuinely challenge the central claim. Explain how it targets the assumption in Section 9, how to test it, what outcomes might occur, and what each would imply. Avoid peripheral edge cases that leave the main claim untouched.
 
-### § 9 - Most vulnerable assumption
+### 12. Later work: Extensions, replications, and rebuttals
 
-Every method depends on assumptions. Identify the most important one: if it fails, the paper's central contribution would fail.
+**Use available search tools** to investigate research published after the original paper or relevant revision: extensions, independent replications, contrary results, errata, updated author versions, and new theoretical accounts. Verify dates and versions. Distinguish empirical follow-ups from papers that merely discuss a related idea. Prefer original papers and official project materials.
 
-Explain precisely why this assumption may not hold in practice, and what evidence the paper provides for it, or what evidence is missing.
+Answer: **What did later work establish? What changes our reading of the original paper? What is still unresolved?** If nothing is found, state the search scope and uncertainty, not that no work exists. If search is unavailable, disclose that limitation rather than inventing a literature review.
 
-Do not list every limitation. Find the assumption whose failure would be most damaging.
+### 13. One worthwhile follow-up research idea
 
-------
+Start from a real failure mode or unmet need identified in Sections 9–12. Ask whether addressing it requires a change in **problem framing, objective, key assumption, or connection to an adjacent field**. Avoid simply adding a module, switching datasets, or extending to another domain.
 
-### § 10 - Minimum reproducible experiment
+Propose **one strongest candidate**, with:
 
-If I had one week, what minimum experiment could I run to test the paper's central claim?
+1. **Motivation:** The consequential limitation or need and why solving it matters.
+2. **Core hypothesis:** The new research proposition and its conceptual difference from existing work.
+3. **Research approach:** Relevant theories, methods, or tools and why they might help.
+4. **First decisive experiment:** An early falsifiable test, comparison, metric, and interpretation of success or failure.
+5. **Novelty boundary:** The closest earlier and subsequent research, what it has already done, what remains distinct in your proposal, and where the novelty search is incomplete.
 
-Specify what data to use, what to implement, what to measure, and what result would support or refute the claim. Prefer an experiment that does not require reproducing the full system.
+Do not promise that an idea is novel, feasible, or conference-worthy. Mark untested claims as hypotheses and prioritize an informative first experiment. If evidence is too limited, articulate a sharp open question instead of packaging a speculative combination as a proven innovation.
 
-------
+## Writing and final quality check
 
-### § 11 - Strongest counterexample
-
-If I wanted to argue against this paper, how would I design a counterexample?
-
-Design the strongest attack on the paper. Find an experiment, theoretical argument, or real-world scenario that can genuinely challenge whether the method works as claimed.
-
-A good counterexample either gives a concrete alternative explanation for the results or identifies conditions where the method should predictably fail.
-
-------
-
-### § 12 - Follow-up research idea
-
-Study the research taste and problem impact of top conference best papers when useful.
-
-Based on the core limitation in Section 9, propose one non-incremental novel research idea. It should not be simply extending the method to domain X or adding a module for case Y. It should be a new framing, a new objective, or a new connection to a neighboring problem that could open a genuinely different direction.
-
-Explain: (a) what limitation or unmet need motivates the idea, (b) what neighboring field, method, or tool it could draw from, and (c) what the first experiment would look like. Clearly separate your proposal from existing work.
-
-------
-
-## Source discipline
-
-Throughout the analysis, strictly distinguish four types of claims:
-
-- **Paper states**: the authors explicitly claim or show this.
-- **Prior work establishes**: this is a documented result in the existing literature. Cite when possible.
-- **Reasonable inference**: this follows logically from the paper's evidence, but is not explicitly stated.
-- **Speculation**: this is your hypothesis and is not directly supported by evidence.
-
-Do not present inference as fact. Do not present speculation as inference. If you are unsure which category a claim belongs to, say so directly.
-
-------
-
-## Style
-
-The default output language is English. Preserve standard technical terms such as attention, fine-tuning, ablation, retrieval, policy gradient, representation, and benchmark.
-
-Use Andrej Karpathy and Kaiming He as style references, but only for transferable technical writing traits.
-
-Requirements:
-
-- Start from a concrete technical situation, not a floating summary.
-- Name the problem directly. Show the failure mode before explaining the method.
-- Use concrete nouns, actions, and numbers. Avoid abstract adjectives.
-- State the claim first, then the evidence.
-- Keep uncertainty visible. Do not pretend everything is settled.
-- Make every sentence informative. Avoid empty generalities.
-- Use flowing paragraphs and avoid overly templated bullet points.
-- Avoid overusing dashes, quotation marks, parentheses, and semicolons.
-- Avoid low-information phrases such as not A but B, it is important to note, it is worth noting, and in conclusion.
-- Do not use hype words such as groundbreaking, game-changing, robust, or seamless unless the paper itself supports that exact claim.
+- Default to English. Keep accepted technical terms such as attention, fine-tuning, ablation, policy gradient, representation, and benchmark.
+- Draw on transferable traits in Andrej Karpathy's writing: concrete problems, visible failure modes, and plain explanations; and Kaiming He's writing: precise problem statements, clean method structure, and evidence-linked claims. Do not impersonate either person or invent personal experience.
+- Mix short and medium sentences. Prefer readable paragraphs; use lists where pipelines, experiments, mathematics, or procedures benefit from them. Avoid excessive em dashes, quotation marks, symmetrical transitions, slogans, and formulaic “not A but B” phrasing.
+- Prefer one well-grounded example over several abstract adjectives. The reader should be able to explain **why the method was proposed, how it runs, and how much the evidence supports it**.
+- Before responding, verify: paper version is correct; decisive claims have sources; mathematical notation is consistent; visual evidence was not misread; author motivations are qualified as reconstructed; no experiments, citations, later work, or novelty are fabricated; the requested depth matches Core Reading or Research Deep Dive.
