@@ -12,8 +12,6 @@
 | --- | --- |
 | [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | 中文版，符合 Agent Skills 标准目录与 `SKILL.md` 格式 |
 | [English Skill](./.agents/skills/paper-reading/SKILL.md) | English version, following the Agent Skills standard |
-| [`SKILL_CHN.md`](./SKILL_CHN.md) | 中文版兼容入口，保留旧链接 |
-| [`SKILL_EN.md`](./SKILL_EN.md) | English compatibility entry, preserving existing links |
 | [`System_Prompt.txt`](./System_Prompt.txt) | 可直接粘贴到 ChatGPT / Claude 自定义指令中的 Prompt |
 
 ## How to Use
