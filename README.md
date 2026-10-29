@@ -12,7 +12,7 @@
 | --- | --- |
 | [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | 中文版，符合 Agent Skills 标准目录与 `SKILL.md` 格式 |
 | [English Skill](./.agents/skills/paper-reading/SKILL.md) | English version, following the Agent Skills standard |
-| [`System_Prompt.txt`](./System_Prompt.txt) | 可直接粘贴到 ChatGPT / Claude 自定义指令中的 Prompt |
+| [System_Prompt.txt](./System_Prompt.txt) | 可直接粘贴到 ChatGPT / Claude 自定义指令中的 Prompt |
 
 ## How to Use
 
