@@ -18,13 +18,13 @@
 
 ### Option A: Claude/Codex Skill
 
-安装 [.agents/skills/paper-reading-zh/SKILL.md](./.agents/skills/paper-reading-zh/SKILL.md)（中文）或 [.agents/skills/paper-reading/SKILL.md](./.agents/skills/paper-reading/SKILL.md)（English），并放在对应的 Skill 目录中。两者都使用 Agent Skills 的标准 `SKILL.md` 文件名和 YAML frontmatter。
+安装 [.agents/skills/paper-reading-zh/SKILL.md](./.agents/skills/paper-reading-zh/SKILL.md)（中文）或 [.agents/skills/paper-reading/SKILL.md](./.agents/skills/paper-reading/SKILL.md)（English），并放在对应的 Skill 目录中。
 
-默认 **Core Reading（第 1–8 节）**，用于理解论文的问题、prior work、思路、intuition、pipeline、数学、实验和 takeaways。想复现、找漏洞、调研后续研究或挖掘新 idea 时，启用 **Research Deep Dive（第 9–13 节）**。若只问某个具体问题，则直接回答，不必执行完整流程。
+最新版本默认 **Core Reading（第 1–8 节）** 用于理解论文的问题、prior work、思路、intuition、pipeline、数学、实验和 takeaways。想复现、找漏洞、调研后续研究或挖掘新idea，可以启用 **Research Deep Dive（第 9–13 节）**。若只问某个具体问题，则直接回答，不必执行完整流程。
 
-旧版保存在 [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29)，可随时回顾或恢复。
+旧版保存在 [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29)，有需要可以用那个。
 
-注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话）
+注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话），所以日常需求的话，我建议使用网页版chat模式总结论文
 
 ### Option B: System Prompt (个人推荐)
 
