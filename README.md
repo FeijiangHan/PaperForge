@@ -19,7 +19,7 @@
 
 将[`SKILL_CHN.md`](./SKILL_CHN.md) 或 [`SKILL_EN.md`](./SKILL_EN.md) 安装为Skill。安装后，在对话中直接发送论文链接或标题，Agent会自动触发完整的12节分析流程。
 
-注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话），所以我主要维护和更新下面可以直接粘贴的版本，更方便嵌入各种llms chat
+注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话）
 
 ### Option B: System Prompt (个人推荐)
 
