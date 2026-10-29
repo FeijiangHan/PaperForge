@@ -24,7 +24,7 @@ Install either the [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) o
 
 **Core Reading (Sections 1–8)** is the default. It covers the research problem, prior work, reconstructed reasoning, intuition, pipeline, math, experimental evidence, and takeaways. **Research Deep Dive (Sections 9–13)** adds vulnerable assumptions, a one-week reproduction, counterexamples, subsequent research, and a follow-up research idea. For a focused question, the agent answers that question without forcing all thirteen sections.
 
-The previous version is saved at [backup/pre-skills-v2-2026-10-29](./tree/backup/pre-skills-v2-2026-10-29).
+The previous version is saved at [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29).
 
 Personal note: I've found ChatGPT better at explaining papers than Codex or Claude Code, at least for my reading workflow.
 
