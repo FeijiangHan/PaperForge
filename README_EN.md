@@ -10,23 +10,20 @@
 
 | File | Description |
 | --- | --- |
-| [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | Chinese paper-reading Skill in the Agent Skills format |
 | [English Skill](./.agents/skills/paper-reading/SKILL.md) | English paper-reading Skill in the Agent Skills format |
-| [System_Prompt.txt](./System_Prompt.txt) | Chinese system prompt for ChatGPT / Claude custom instructions |
 | [System_Prompt_EN.txt](./System_Prompt_EN.txt) | English system prompt for ChatGPT / Claude custom instructions |
 
 ## How to Use
 
 ### Option A: Claude/Codex Skill
 
-Install either the [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) or [English Skill](./.agents/skills/paper-reading/SKILL.md) under the corresponding skills directory. Both use a standard `SKILL.md` with YAML frontmatter.
-
+Install [English Skill](./.agents/skills/paper-reading/SKILL.md) under the corresponding skills directory.
 
 ### Option B: System Prompt (my personal recommendation)
 
 I've found ChatGPT better at explaining papers than Codex or Claude Code, at least for my reading workflow.
 
-Copy [System_Prompt.txt](./System_Prompt.txt) into either:
+Copy [System_Prompt.txt](./System_Prompt_EN.txt) into either:
 
 - **Method 1:** Project → Custom Instructions. Then send a paper link, title, or PDF without pasting the prompt every time.
 - **Method 2:** Paste the prompt directly into a conversation, then provide a paper link, title, or PDF.
