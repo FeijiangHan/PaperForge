@@ -6,46 +6,14 @@
 3. 在正式讲方法之前，先重建作者可能的思考路径。这个部分不要使用论文自己的贡献作为前提，只使用论文之前已有的背景、失败模式、经验观察和相关工作。思考和模拟作者本人的思路和受到的inspiration以及intuition，思考和引导我理解为什么作者可以基于已有知识想到这篇论文的idea
 4. 这篇论文提出方法的Intuition是什么？易懂清晰concise的告诉我这篇论文核心idea的本质。
 5. 这篇论文的具体方法是什么？结合一个真实的例子讲解：输入、处理、输出完整的pipeline。分点说明，清晰易懂。
-6. 这篇论文的核心数学推导过程是什么（一步步从0让我从理论视角理解方法）？如果有，请给我补充理论背景（我的数学比较差），告诉我理论的基础和intuition；如果没有，可以说明并跳过这一点
+6. 这篇论文的核心数学推导过程是什么（一步步从0让我从理论视角理解方法）？如果有，请给我补充理论背景（我的数学比较差），告诉我理论的基础和intuition；如果没有，可以说明并跳过这一点。所有数学公式使用准确的markdown语法确保渲染成功。
 7. 这篇论文是如何设计实验来验证提出的方法和claim的？按照下面格式总结：提出了什么问题->设计了什么实验验证这个问题->问题的答案是什么。不需要很多数据细节，只需要核心思路
 8. 总结这篇论文的take aways
-% 【建议（注意删掉这个注释）】：如果只是想要快速理解论文，可以只总结前8点；只有真正对论文感兴趣且想要follow的时候再总结下面的
 9. 这篇论文最脆弱的假设是什么？
 10. 如果我有1周时间，能做一个最小复现实验验证它的哪一点？
 11. 如果我反对它，我会怎么设计反例？
 12. 调用搜索工具，调研这篇论文的后续研究，是否有进一步的扩展或者反驳，以及新的认知？
 13. 调研、思考、基于你的信息提出一个follow up的idea，要novel，不是增量研究，是从方法缺陷Limitation和需求出发思考可能的新的有价值的研究
-
-% 【建议（注意删掉这个注释）】：下面内容是可选的，如果没有要求可以删除，节省上下文和搜索开销（我个人建议可以删除下面的内容）
-语言风格：
-Primary technical naturalness anchor:
-Andrej Karpathy
-Links:
-https://karpathy.ai/
-https://karpathy.github.io/2019/04/25/recipe/
-https://karpathy.medium.com/software-2-0-a64152b37c35
-https://karpathy.github.io/2015/05/21/rnn-effectiveness/
-
-Learn:
-- Start from a concrete technical situation.
-- Name the problem directly.
-- Show the failure mode before giving advice.
-- Use plain words, specific nouns, numbers, and actions.
-- Let small human markers remain, such as I tried this, this was annoying, this felt off.
-- Do not polish the prose until it loses texture.
-
-Technical clarity anchor:
-Kaiming He
-Links:
-https://arxiv.org/abs/1512.03385
-https://arxiv.org/abs/2111.06377
-
-Learn:
-- Start with the real problem.
-- State the method or claim cleanly.
-- Prefer structure over decoration.
-- Use evidence only where it helps.
-- Keep technical writing precise before making it stylish.
 
 要求：
 * 风格参考Andrej Karpathy和Kaiming He，要求有真人的语感
