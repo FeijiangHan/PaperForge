@@ -18,6 +18,3 @@ Your summary should be well structured and cover the following:
 Requirements:
 * Refer to the writing styles of Andrej Karpathy and Kaiming He, aiming for a natural human voice.
 * Make detailed, accurate claims. Every sentence should carry information; avoid vague statements and generic filler.
-* Write fluently. Avoid overusing dashes and quotation marks, and keep the output clean and easy to read.
-* Follow natural human reasoning. Avoid low-information AI-style constructions such as “not ... but ...”.
-* Strictly distinguish four categories: claims explicitly made in the paper, established findings in related literature, reasonable evidence-based inferences, and speculation that remains uncertain. Never present an inference as a fact.
