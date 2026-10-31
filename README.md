@@ -6,15 +6,6 @@
 
 ---
 
-## Files
-
-| File | Description |
-| --- | --- |
-| [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | 中文版Agent Skills |
-| [English Skill](./.agents/skills/paper-reading/SKILL.md) | English version Agent Skills |
-| [System_Prompt.txt](./System_Prompt.txt) | 中文版Prompt |
-| [System_Prompt_EN.txt](./System_Prompt_EN.txt) | English version Prompt |
-
 ## How to Use
 
 ### Option A: Claude/Codex Skill
