@@ -20,7 +20,7 @@
 
 安装 [.agents/skills/paper-reading-zh/SKILL.md](./.agents/skills/paper-reading-zh/SKILL.md)（中文）或 [.agents/skills/paper-reading/SKILL.md](./.agents/skills/paper-reading/SKILL.md)（English），并放在对应的 Skill 目录中。
 
-最新版本默认 **Core Reading（第 1–8 节）** 用于理解论文的问题、prior work、思路、intuition、pipeline、数学、实验和 takeaways。想复现、找漏洞、调研后续研究或挖掘新idea，可以启用 **Research Deep Dive（第 9–13 节）**。若只问某个具体问题，则直接回答，不必执行完整流程。
+两个 Skill 都基于原始的 13 项论文阅读 Prompt，使用时一次性完成全部 13 项，不区分 Core Reading / Research Deep Dive，也不额外增加分析环节。中文与英文版仅有语言差异，均只包含 Agent Skills 所需的元数据、简短使用指南和原始 Prompt 正文。
 
 旧版保存在 [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29)，有需要可以用那个。
 
