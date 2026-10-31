@@ -1,15 +1,7 @@
 ---
 name: paper-reading-zh
-description: 用中文深入阅读和总结研究论文。用于用户提供论文 PDF、arXiv、OpenReview、论文标题或链接，要求解释研究问题、方法、数学、实验、局限、复现、反例、后续研究或 follow-up idea。
+description: 用中文深入阅读和总结研究论文。用于用户提供论文PDF、arXiv、OpenReview、论文标题或链接，要求总结论文。
 ---
-
-# PaperForge：论文阅读（中文）
-
-## 使用指南
-
-当用户提供论文并请求阅读或总结时，使用可用的论文读取和搜索工具，按照下面的原始 Prompt 一次性完成全部 13 项。不划分额外模式，不增加新的分析环节。
-
-## 原始 Prompt
 
 你的任务是：清晰、易懂、深入、详细的总结这篇论文（读取PDF、搜索arxiv等各种信息源获取论文）。
 
