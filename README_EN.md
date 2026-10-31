@@ -21,13 +21,10 @@
 
 Install either the [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) or [English Skill](./.agents/skills/paper-reading/SKILL.md) under the corresponding skills directory. Both use a standard `SKILL.md` with YAML frontmatter.
 
-Both skills follow the complete original 13-point paper-reading prompt in one response, without separate Core Reading or Research Deep Dive modes or added analysis steps. Each contains only the Agent Skills metadata, a short usage guide, and the original prompt (translated for the English skill).
-
-The previous version is saved at [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29).
-
-Personal note: I've found ChatGPT better at explaining papers than Codex or Claude Code, at least for my reading workflow.
 
 ### Option B: System Prompt (my personal recommendation)
+
+I've found ChatGPT better at explaining papers than Codex or Claude Code, at least for my reading workflow.
 
 Copy [System_Prompt.txt](./System_Prompt.txt) into either:
 
@@ -36,7 +33,7 @@ Copy [System_Prompt.txt](./System_Prompt.txt) into either:
 
 I used Method 1 for a long time and found it convenient. Recently, Method 2 seemed to produce better summaries. I'm not sure whether the difference is caused by the prompt's position in the instruction hierarchy.
 
-**One-click copy version (English translation of the original prompt in the Chinese README):**
+**One-click copy version:**
 
 ```txt
 Your task is to explain a research paper clearly, accessibly, deeply, and in detail. Read the PDF and search sources such as arXiv when available.
@@ -44,14 +41,12 @@ Your task is to explain a research paper clearly, accessibly, deeply, and in det
 Organize your answer around these questions:
 1. What research problem does the paper address? Why does it matter, and what value would solving it bring? Research the background when useful.
 2. Was the problem addressed before? What specifically was missing from earlier work?
-3. Before explaining the method, reconstruct a plausible path to the idea using only knowledge, failures, observations, and prior work available before this paper. Help me understand how a researcher could have arrived at this idea. Do not claim this is the authors' actual thought process.
+3. Before explaining the method, reconstruct a plausible path to the idea using only knowledge, failures, observations, and prior work available before this paper. Help me understand how a researcher could have arrived at this idea.
 4. What is the method's core intuition? Explain the essential idea concisely and in plain language.
 5. How does the method work? Walk through a concrete input-to-output example and the full pipeline.
 6. If the paper contains meaningful math, explain its core derivation from the foundations and provide intuition for each step. Assume my mathematical background is limited. Use valid Markdown math notation. Otherwise, skip this section.
 7. How do the experiments test the claims? Use: question → experiment → result and what it establishes. Focus on experimental logic rather than excessive numbers.
 8. Summarize the main takeaways.
-
-For a quick paper reading, stop after Section 8. If I want to pursue the paper, continue with:
 9. What is the most vulnerable assumption?
 10. What small experiment could I run within one week to test a central claim?
 11. What is the strongest counterexample I could design?
@@ -61,11 +56,9 @@ For a quick paper reading, stop after Section 8. If I want to pursue the paper, 
 Style:
 - Use transferable traits of Andrej Karpathy's and Kaiming He's technical clarity.
 - Make concrete, accurate claims; every sentence should carry information.
-- Write fluidly and avoid unnecessary dashes, quotation marks, formulaic contrasts, and generic filler.
-- Separate claims explicitly stated in the paper, results established in prior literature, evidence-based inferences, and untested speculation. Do not pass inference off as fact.
 ```
 
-**October 27, 2026 update:**
+**Suggestions:**
 
 1. Earlier versions of the prompt could miss visual understanding. Figure 1, method diagrams, and experimental plots can explain a paper more effectively than text alone, and also help develop a sense for good research figures. You could also experiment with interactive HTML explanations or AI-generated explainer videos.
 2. A full, lengthy analysis is wasteful if I lose interest in the paper. A better first step can be to propose one or two research questions based on the paper so I can decide whether I want to read further. Having a question to solve makes reading more purposeful.
