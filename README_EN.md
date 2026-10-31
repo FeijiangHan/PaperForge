@@ -12,7 +12,8 @@
 | --- | --- |
 | [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | Chinese paper-reading Skill in the Agent Skills format |
 | [English Skill](./.agents/skills/paper-reading/SKILL.md) | English paper-reading Skill in the Agent Skills format |
-| [System_Prompt.txt](./System_Prompt.txt) | Copyable system prompt for ChatGPT / Claude custom instructions |
+| [System_Prompt.txt](./System_Prompt.txt) | Chinese system prompt for ChatGPT / Claude custom instructions |
+| [System_Prompt_EN.txt](./System_Prompt_EN.txt) | English system prompt for ChatGPT / Claude custom instructions |
 
 ## How to Use
 
