@@ -20,7 +20,7 @@
 
 Install either the [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) or [English Skill](./.agents/skills/paper-reading/SKILL.md) under the corresponding skills directory. Both use a standard `SKILL.md` with YAML frontmatter.
 
-**Core Reading (Sections 1–8)** is the default. It covers the research problem, prior work, reconstructed reasoning, intuition, pipeline, math, experimental evidence, and takeaways. **Research Deep Dive (Sections 9–13)** adds vulnerable assumptions, a one-week reproduction, counterexamples, subsequent research, and a follow-up research idea. For a focused question, the agent answers that question without forcing all thirteen sections.
+Both skills follow the complete original 13-point paper-reading prompt in one response, without separate Core Reading or Research Deep Dive modes or added analysis steps. Each contains only the Agent Skills metadata, a short usage guide, and the original prompt (translated for the English skill).
 
 The previous version is saved at [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29).
 
