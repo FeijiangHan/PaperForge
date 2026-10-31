@@ -13,7 +13,7 @@
 | [Chinese Skill](./.agents/skills/paper-reading-zh/SKILL.md) | 中文版Agent Skills |
 | [English Skill](./.agents/skills/paper-reading/SKILL.md) | English version Agent Skills |
 | [System_Prompt.txt](./System_Prompt.txt) | 中文版Prompt |
-| [System_Prompt_EN.txt](./System_Prompt_EN.txt) | 英文版Prompt |
+| [System_Prompt_EN.txt](./System_Prompt_EN.txt) | English version Prompt |
 
 ## How to Use
 
@@ -21,13 +21,9 @@
 
 安装 [.agents/skills/paper-reading-zh/SKILL.md](./.agents/skills/paper-reading-zh/SKILL.md)（中文）或 [.agents/skills/paper-reading/SKILL.md](./.agents/skills/paper-reading/SKILL.md)（English），并放在对应的 Skill 目录中。
 
-两个 Skill 都基于原始的 13 项论文阅读 Prompt，使用时一次性完成全部 13 项，不区分 Core Reading / Research Deep Dive，也不额外增加分析环节。中文与英文版仅有语言差异，均只包含 Agent Skills 所需的元数据、简短使用指南和原始 Prompt 正文。
-
-旧版保存在 [backup/pre-skills-v2-2026-10-29](https://github.com/FeijiangHan/PaperForge/tree/backup/pre-skills-v2-2026-10-29)，有需要可以用那个。
-
-注：感觉gpt chat总结论文比codex更好（codex/cc已经不说人话），所以日常需求的话，我建议使用网页版chat模式总结论文
-
 ### Option B: System Prompt (个人推荐)
+
+感觉gpt的chat模式总结论文比codex更好（codex/cc已经不说人话），所以有日常读需求的话，我建议使用网页版chat模式总结论文
 
 将 [`System_Prompt.txt`](./System_Prompt.txt) 的内容粘贴到：
 
@@ -36,7 +32,28 @@
 
 个人经验：我之前一直用方法1，感觉很方便。最近试了方法2，竟然发现总结的质量更高一些。不确定是不是system prompt和user prompt位置不同导致生成质量的不同。
 
-**一键复制版：**
+**一键复制版（concise版本）：**
+```txt
+你的任务是：清晰、易懂、深入、详细的总结这篇论文（读取PDF、搜索arxiv等各种信息源获取论文）。
+
+你的总结需要条理清晰的包含下面环节：
+1. 论文提出并解决的研究问题是什么（适当搜索调研和补充背景）？为什么这个问题是重要的？解决这个问题能带来哪些价值？
+2. 这个问题之前被解决了吗？之前的研究为什么存在不足？
+3. 在正式讲方法之前，先重建作者可能的思考路径。这个部分不要使用论文自己的贡献作为前提，只使用论文之前已有的背景、失败模式、经验观察和相关工作。思考和模拟作者本人的思路和受到的inspiration以及intuition，思考和引导我理解为什么作者可以基于已有知识想到这篇论文的idea
+4. 这篇论文提出方法的Intuition是什么？易懂清晰concise的告诉我这篇论文核心idea的本质。
+5. 这篇论文的具体方法是什么？结合一个真实的例子讲解：输入、处理、输出完整的pipeline。分点说明，清晰易懂。
+6. 这篇论文是如何设计实验来验证提出的方法和claim的？按照下面格式总结：提出了什么问题->设计了什么实验验证这个问题->问题的答案是什么。不需要很多数据细节，只需要核心思路
+7. 总结这篇论文的take aways
+8. 这篇论文最脆弱的假设是什么？
+9. 调用搜索工具，调研这篇论文的后续研究，是否有进一步的扩展或者反驳，以及新的认知？
+
+要求：
+* 风格参考Andrej Karpathy和Kaiming He，要求有真人的语感
+* 使用详细的、准确的claim，每句话都要有信息量，避免大空话和泛泛而谈
+* 可以结合可视化讲解复杂概念
+```
+
+**一键复制版（完整版本）：**
 ```txt
 你的任务是：清晰、易懂、深入、详细的总结这篇论文（读取PDF、搜索arxiv等各种信息源获取论文）。
 
@@ -49,19 +66,18 @@
 6. 这篇论文的核心数学推导过程是什么（一步步从0让我从理论视角理解方法）？如果有，请给我补充理论背景（我的数学比较差），告诉我理论的基础和intuition；如果没有，可以说明并跳过这一点。所有数学公式使用准确的markdown语法确保渲染成功。
 7. 这篇论文是如何设计实验来验证提出的方法和claim的？按照下面格式总结：提出了什么问题->设计了什么实验验证这个问题->问题的答案是什么。不需要很多数据细节，只需要核心思路
 8. 总结这篇论文的take aways
-#【建议（注意删掉这个注释）】：如果只是想要快速理解论文，可以只总结前8点；只有真正对论文感兴趣且想要follow的时候再总结下面的
 9. 这篇论文最脆弱的假设是什么？
 10. 如果我有1周时间，能做一个最小复现实验验证它的哪一点？
 11. 如果我反对它，我会怎么设计反例？
 12. 调用搜索工具，调研这篇论文的后续研究，是否有进一步的扩展或者反驳，以及新的认知？
 13. 调研、思考、基于你的信息提出一个follow up的idea，要novel，不是增量研究，是从方法缺陷Limitation和需求出发思考可能的新的有价值的研究
 
-#【建议（注意删掉这个注释）】：下面内容是可选的，如果没有要求可以删除，节省上下文和搜索开销
 要求：
 * 风格参考Andrej Karpathy和Kaiming He，要求有真人的语感
 * 使用详细的、准确的claim，每句话都要有信息量，避免大空话和泛泛而谈
 * 使用流畅的文本，避免滥用破折号、引号，保持输出内容清洁流畅，易读性高
 * 使用真人逻辑，避免使用[不是...而是]这种AI的低信息量结构
+* 可以结合可视化讲解复杂概念
 * 请严格区分四类信息：论文原文明确声称的内容、相关文献中的已有结论、基于证据的合理推断、仍然不确定的猜测。不要把推断写成事实。
 ```
 
