@@ -1,15 +1,7 @@
 ---
 name: paper-reading
-description: Read and explain research papers in English. Use when a user provides a PDF, arXiv or OpenReview link, paper title, or other paper link and requests a detailed summary, method or math explanation, experimental analysis, limitations, reproduction, counterexamples, later research, or follow-up ideas.
+description: Read and summarize research papers in depth in English. Use when a user provides a paper PDF, arXiv or OpenReview link, paper title, or URL and asks for a paper summary.
 ---
-
-# PaperForge: Paper Reading (English)
-
-## Usage
-
-When the user provides a paper and asks to read or summarize it, use available paper-reading and search tools and address all 13 points in the prompt below in a single response. Do not introduce separate modes or additional analysis steps.
-
-## Original Prompt (English translation)
 
 Your task is to summarize this paper clearly, accessibly, deeply, and in detail (read the PDF and search arXiv and other available sources for the paper).
 
